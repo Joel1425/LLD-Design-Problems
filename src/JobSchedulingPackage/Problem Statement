@@ -1,0 +1,38 @@
+Problem Statement
+
+Design a Job Scheduling System where jobs are submitted in batches.
+The scheduler allocates jobs to available clusters by matching job requirements (e.g., CPU, RAM) with
+cluster resources, considering job priority and infrastructure availability.
+
+Functional Requirements
+    Cluster Resource Management:
+        1. The system should allow users to add clusters (along with their infrastructure configurations like CPU and Memory).
+        2. Clusters can run multiple jobs simultaneously, provided they have enough available resources
+           to satisfy all the running jobs’ requirements.
+        3. Resources of a cluster should be allocated to a job for the entire duration of its execution.
+
+    Job Submission:
+        1. The system should allow users to submit jobs with specific infrastructure requirements (CPU, RAM) and job priority.
+        2. Each job will include the execution time, specifying how long the job will use the allocated resources.
+
+    Job Scheduling:
+        1. The system should dispatch jobs to clusters based on resource availability and job priority.
+        2. Jobs should be scheduled for a specific time duration (execution time).
+        3. Job priority should be considered when determining which job to run first in case of resource contention.
+
+    Job Execution and Completion:
+        1. The system should start executing jobs on the assigned cluster as soon as they are dispatched.
+        2. Once a job completes its execution (after the specified time), the resources should be freed up.
+
+Non-functional Requirements
+    Scalability:
+        1. The system should be able to handle a large number of clusters and jobs.
+        2. The system should efficiently manage resources when multiple jobs run concurrently on the same cluster.
+
+    Concurrency:
+        1. The system must support running multiple jobs on the same cluster at the same time,
+           ensuring resource contention is managed.
+        2. Resource allocation should be thread-safe to prevent over-allocation.
+
+    Latency:
+        1. Job scheduling should be optimised to minimise the wait time before a job is scheduled and executed.

@@ -1,0 +1,76 @@
+Problem Statement
+    You are developing a large-scale web application consisting of multiple services and endpoints.
+    You need to design an efficient URL router to map incoming HTTP requests to the appropriate handler
+    functions based on specific routing rules.
+
+Functional Requirements
+    Route Management:
+        1. The router should support the addition of routes that map specific URL patterns to handler functions.
+        2. Routes may contain dynamic segments (path parameters) identified by a placeholder, such as /users/:userId or /products/:productId
+
+    Request Handling:
+        1. For any incoming URL, the router should be able to identify the best matching route and invoke
+           the corresponding handler.
+        2. It should extract any path parameters from the URL and pass them to the handler function.
+
+    Route Matching:
+        1. The router should support both static and dynamic route matching.
+        2. Static routes like /home should be matched exactly.
+        3. Dynamic routes like /users/:userId/orders/:orderId should match URLs like
+           /users/123/orders/456 and extract userId and orderId as parameters.
+        4. The router should support wildcard routes, such as /static/*filePath,
+           which can match paths like /static/images/logo.png and extract the rest of the path as filePath.
+
+    Route Priority:
+        1. The router should prioritise more specific routes over less specific ones.
+           For example, /users/:userId should take precedence over /users/*
+
+    HTTP Methods:
+        1. The router should support differentiating routes based on the HTTP method
+           (e.g., GET, POST, PUT, DELETE). For example, the same URL path /users/:userId might have separate
+           handlers for GET and POST requests.
+
+    Error Handling:
+        1. If a URL does not match any route, the router should return a “404 Not Found” response.
+        2. If a matching route is found but the HTTP method is not supported, the router should return
+           a “405 Method Not Allowed” response.
+
+Non-functional Requirements
+    Fast Route Matching:
+        1. The router should be optimised for fast lookup times, as it may need to handle a high volume of incoming requests.
+        2. Route matching should aim for O(1) or O(log n) time complexity.
+
+    Extensibility:
+        1. The system should be designed to support future extensions, such as adding middleware functions, route grouping, or support for query parameters and headers.
+
+Example
+Suppose you have the following routes registered in the router:
+GET /home
+POST /users
+GET /users/:userId
+GET /users/:userId/orders/:orderId
+GET /static/*filePath
+
+Scenario 1: Static Route Matching
+Input: GET /home
+Output: Calls the handler function registered for /home.
+
+Scenario 2: Dynamic Route Matching
+Input: GET /users/123
+Output: Calls the handler function registered for /users/:userId with userId = 123.
+
+Scenario 3: Dynamic Route with Multiple Parameters
+Input: GET /users/123/orders/456
+Output: Calls the handler function registered for /users/:userId/orders/:orderId with userId = 123 and orderId = 456.
+
+Scenario 4: Wildcard Route
+Input: GET /static/images/logo.png
+Output: Calls the handler function registered for /static/*filePath with filePath = images/logo.png.
+
+Scenario 5: No Matching Route
+Input: GET /unknown
+Output: Returns “404 Not Found”.
+
+Scenario 6: Method Not Allowed
+Input: POST /users/123
+Output: Returns “405 Method Not Allowed”.

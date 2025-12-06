@@ -1,0 +1,38 @@
+Design a vending machine
+
+Requirements:
+1. Vending machine has different shelves.
+2. Each shelf has different products
+3. There is a price associated with the product
+4. There is a system which takes product input from user, collects cash, validates amount, and returns change.
+5. There is a dispenser which dispenses products if #4 is satisfied.
+
+Core Entities:
+1. System
+   VendingMachine()
+   List<Users>
+
+2. VendingMachine
+   List<Shelf>
+   Collector()
+   CashDispenser()
+   Validator()
+   ProductDispenser()
+
+3. Shelf
+   - shelfID
+   - List<Product>
+
+4. Product
+   - id
+   - name
+   - price
+   - units
+   DecrementUnit()
+   getUnits()
+
+5. User
+   - id
+   - name
+
+

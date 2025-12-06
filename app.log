@@ -1,0 +1,12 @@
+[2025-10-25 17:23:47.800] [INFO] [Worker-1] - Message 0 from Worker-1
+[2025-10-25 17:23:47.800] [INFO] [Worker-2] - Message 0 from Worker-2
+[2025-10-25 17:23:47.800] [INFO] [Worker-1] - Message 1 from Worker-1
+[2025-10-25 17:23:47.800] [INFO] [Worker-2] - Message 1 from Worker-2
+[2025-10-25 17:23:47.800] [INFO] [Worker-2] - Message 2 from Worker-2
+[2025-10-25 17:23:47.800] [INFO] [Worker-1] - Message 2 from Worker-1
+[2025-10-25 17:23:47.801] [INFO] [Worker-2] - Message 3 from Worker-2
+[2025-10-25 17:23:47.801] [INFO] [Worker-1] - Message 3 from Worker-1
+[2025-10-25 17:23:47.801] [INFO] [Worker-2] - Message 4 from Worker-2
+[2025-10-25 17:23:47.801] [INFO] [Worker-1] - Message 4 from Worker-1
+[2025-10-25 17:23:47.801] [ERROR] [main] - An error occurred!
+[2025-10-25 17:23:47.801] [FATAL] [main] - System shutting down...

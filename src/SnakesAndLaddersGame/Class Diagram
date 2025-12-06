@@ -1,0 +1,37 @@
+<Interface> Piece ✅
+    + move()
+
+Class Snake implements Piece ✅
+    int start
+    int end
+    + move() // Override
+
+Class Ladder implements Piece ✅
+    int start
+    int end
+    + move() // Override
+
+Class Dice ✅
+    + roll() -> int [1,6]
+
+Class Player ✅
+    - id
+    - currentPosition
+    - hasWon -> boolean false
+
+Class Board ✅
+    - n -> Size of the board
+    - List<Snake>
+    - List<Ladder>
+
+
+Class Game ✅
+    - List<Player>
+    - Board
+    - dice
+    + startGame()
+
+
+
+
+
