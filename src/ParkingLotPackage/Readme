@@ -1,0 +1,41 @@
+Requirements:
+-------------
+
+Parking lot constraints:
+1. Supports different vehicle types: BIKE, CAR, TRUCK (optional later)
+2. Parking spots have corresponding types.
+3. One vehicle occupies exactly one spot.
+
+Entry Flow:
+1. User arrives.
+2. System checks for an available spot of that type.
+3. Allocate the spot.
+4. Generate a ParkingTicket.
+
+Exit Flow:
+1. User submits ticket.
+2. System fetches entry time, spot, vehicle type.
+3. Applies correct PricingStrategy.
+4. Generates a bill.
+
+------------------------------------------------------------------------------------------------------------------------
+
++-------------------------------------------------------+
+|                   Parking Lot System                  |
+|                                                       |
+|   Actors:                                             |
+|   - User ✅                                           |
+|                                                       |
+|   Entities:                                           |
+|   - Gate ✅                                           |
+|   - Vehicle ✅                                        |
+|   - ParkingSpot ✅                                    |
+|   - ParkingTicket ✅                                  |
+|                                                       |
+|   Services:                                           |
+|   - ParkingLot ✅                                     |
+|   - ParkingStrategy ✅                                |
+|   - ParkingPriceStrategy ✅                           |
++-------------------------------------------------------+
+
+------------------------------------------------------------------------------------------------------------------------
