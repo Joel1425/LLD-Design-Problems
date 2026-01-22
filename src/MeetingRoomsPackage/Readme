@@ -1,0 +1,90 @@
+Meeting Room Reservation Platform
+
+Design the low-level system for a Meeting Room Reservation Platform that allows employees in an organization
+to book rooms for meetings, check availability, and manage bookings.
+
+The system should support the following core features:
+
+Requirements:
+
+Functional Requirements:
+1. An employee can view all available meeting rooms for a given time interval.
+2. An employee can book a meeting room if it is free during the requested time.
+3. Ability to cancel an existing meeting.
+4. Handle overlapping meeting requests gracefully.
+5. Ability to list all meetings scheduled for a given room or employee.
+6. Support recurring meetings (optional enhancement).
+
+--
+LocalDate localDate = LocalDate.of(2025,12,5);
+System.out.println(localDate);
+LocalTime localTime = LocalTime.of(12,55);
+System.out.println(localTime);
+--
+
+Entities Involved:
+1. Employee
+   - id : String
+
+2. MeetingRoom
+   - id : String
+
+3. Booking
+   - id : String
+   - startTime : LocalDateTime
+   - endTime : LocalDateTime
+   - meetingRoom : MeetingRoomID
+   - bookedBy : EmployeeID
+
+4. Scheduler
+   - employeeDB : map<String, Employee>
+   - meetingRoomDB : map<String, MeetingRoom>
+   - bookingDB : map<String, Booking>
+
+   + addAnEmployee( employee )
+   + addAMeetingRoom( meetingRoom )
+   + getAllBookingsByTime( startTime, endTime ) -> all booking for a time window from all meeting rooms
+   + bookMeetingRoom( employeeID, startTime, endTime, meetingRoomID )
+   + cancelExistingBooking( bookingID )
+   + getAllMeetingsForAMeetingRoom( meetingRoomID )
+   + getAllMeetingsByEmployee( employeeID )
+
+
+
+--- NOTES ---
+LocalDateTime start = LocalDateTime.of(2026, 1, 22, 10, 0);
+LocalDateTime end   = LocalDateTime.of(2026, 1, 22, 11, 0);
+
+int recurrenceCount = 5;
+
+List<TimeSlot> slots = new ArrayList<>();
+
+LocalDateTime currentStart = start;
+LocalDateTime currentEnd = end;
+
+for (int i = 0; i < recurrenceCount; i++) {
+    slots.add(new TimeSlot(currentStart, currentEnd));
+
+    currentStart = currentStart.plusDays(1);
+    currentEnd   = currentEnd.plusDays(1);
+}
+
+slots.forEach(System.out::println);
+
+---
+LocalDateTime start = LocalDateTime.of(2026, 1, 26, 10, 0);
+LocalDateTime end   = LocalDateTime.of(2026, 1, 26, 11, 0);
+
+LocalDateTime recurrenceUntil = LocalDateTime.of(2026, 2, 28, 23, 59);
+
+List<TimeSlot> slots = new ArrayList<>();
+
+LocalDateTime cs = start;
+LocalDateTime ce = end;
+
+while (!cs.isAfter(recurrenceUntil)) {
+    slots.add(new TimeSlot(cs, ce));
+
+    cs = cs.plusWeeks(1);
+    ce = ce.plusWeeks(1);
+}

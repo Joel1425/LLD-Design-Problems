@@ -1,0 +1,24 @@
+# Requirements
+1. User can create and manage friendships (bidirectional).
+2. User can CRUD groups and manage group membership.
+3. User can create/delete/edit expenses:
+      - Expenses can belong to users or groups.
+      - Expenses must support multiple splitting strategies (equal, exact, percentage).
+4. System must maintain and compute balances:
+      - Per friend
+      - Per group
+      - Overall
+      - Simplified net balances
+
+# Actors:
+  - User ✅
+# Entities:
+  - Expense ✅
+  - Group ✅
+  - BalanceSheet ✅
+  - Split ✅
+# Services:
+  - SplitStrategy (EqualSplit, PercentageSplit) ✅
+  - ExpenseService ✅
+  - BalanceService ✅
+  - GroupService ✅

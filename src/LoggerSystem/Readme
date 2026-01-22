@@ -1,0 +1,29 @@
+Logger System
+
+🎯 Goal: Design a Logger System that allows applications to log messages at different severity levels in a
+         thread-safe and configurable manner.
+
+Functional Requirements:
+The system should support multiple log levels:
+DEBUG
+INFO
+WARN
+ERROR
+
+A log message should be logged only if its level is equal to or higher than the configured log level.
+
+The system should support logging messages in the format:
+[TIMESTAMP] [LEVEL] [MESSAGE]
+
+The system should allow:
+Setting the global log level
+Changing the log level at runtime
+
+The logger should support multiple outputs (appenders):
+Console
+File
+(Optional) In-memory / custom sink
+
+The system should be thread-safe:
+Multiple threads can log simultaneously
+Log messages should not interleave or corrupt output
