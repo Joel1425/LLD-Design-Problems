@@ -1,0 +1,15 @@
+🏧 ATM LLD — Simple Initial Requirements
+🎯 Goal: Design a basic ATM system that allows a user to withdraw money.
+
+✅ Functional Requirements (MINIMAL)
+
+1. User inserts an ATM card
+2. User enters PIN
+3. System validates: PIN is correct
+4. User can withdraw cash
+5. Withdrawal should fail if:
+    1. account balance is insufficient
+    2. ATM does not have enough cash
+6. On success:
+    1. Cash is dispensed
+    2. Account balance is updated
