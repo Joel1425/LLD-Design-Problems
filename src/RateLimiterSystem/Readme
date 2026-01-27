@@ -1,0 +1,45 @@
+🚦 Rate Limiter
+🎯 Goal : Design a Rate Limiter that controls the number of requests a client can make,
+          using pluggable rate-limiting strategies.
+
+✅ Core Functional Requirements
+1. The system should limit requests per client
+2. Client can be identified by clientId (userId, API key, IP, etc.)
+3. The system should expose an API:
+    allowRequest(clientId)
+    1. Returns true if the request is allowed
+    2. Returns false if the request is rate-limited
+4. Each client is allowed N requests within a given time constraint, depending on the configured strategy.
+5. The rate limiter must support multiple rate-limiting strategies, such as:
+    1. Fixed Window
+    2. Sliding Window
+    3. Token Bucket
+6. The strategy should be configurable:
+    1. At initialization time
+    2. Or dynamically (per client or globally)
+7. The rate limiter should be able to switch strategies without changing client code.
+
+
+Core Entities
+1. APIRequest
+   - apiName
+   - clientIP
+   - timestamp
+
+3. RateLimitingStrategy <interface>
+   + allowRequest( requestTimestamps, limit, windowSize );
+
+4. FixedWindowRateLimitingStrategy
+   + allowRequest( requestTimestamps, limit, windowSize );
+
+5. RateLimiterConfig
+   - maxRequests;           // N
+   - windowSizeInMillis;    // T
+   - rateLimitingStrategy
+
+6. RateLimiter
+   - requestDB : <clientIP, <apiName, []timestamps>>
+   - apiConfigs : <apiName, RateLimiterConfig>
+
+   + allowRequest( APIRequest request )
+
